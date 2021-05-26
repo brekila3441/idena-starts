@@ -4,12 +4,13 @@ sudo apt-get install git npm unzip curl screen -y
 
 mkdir datadir && cd datadir
 mkdir idenachain.db && cd idenachain.db
-wget https://sync.idena-ar.com/idenachain.db.zip
-unzip -o idenachain.db.zip && rm idenachain.db.zip
+#wget "https://idena.site/idenachain.db.zip"
+wget "https://sync.idena.site/idenachain.db.zip"
+unzip idenachain.db.zip && rm idenachain.db.zip
 cd ..
 cd ..
 
-curl -s https://github.com/idena-network/idena-go/releases/download/v0.26.1/idena-node-linux-0.26.1 \
+curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest \
 | grep browser_download_url \
 | grep idena-node-linux-0.* \
 | cut -d '"' -f 4 \
@@ -36,7 +37,7 @@ cd idena-node-proxy
 bash -c 'echo "AVAILABLE_KEYS=[\"api1\",\"api2\",\"api3\",\"api4\",\"api5\",\"api6\",\"api7\",\"api8\",\"api9\",\"api10\",\"api11\",\"api12\",\"api13",\"api14\",\"api15\",\"api16\",\"api17\",\"api18",\"api19"\,\"api20\"]
 IDENA_URL=\"http://localhost:9009\"
 IDENA_KEY=\"95e76e2819f78c3bebf4b61967772d70\"
-PORT=80" > .env'
+PORT=80 > .env'
 
 npm install
 npm start
